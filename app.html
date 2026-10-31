@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StaaChat — Aplikasi Chat Ringan</title>
+<meta name="description" content="StaaChat adalah aplikasi chat ringan, gratis, dan bebas iklan. Ukuran hanya 14 MB. Download APK StaaChat versi 1.0.0 sekarang. Powered by STAADEV.">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="author" content="STAADEV">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="StaaChat — Chat Ringan, Gratis, Tanpa Iklan">
+<meta property="og:description" content="Download StaaChat APK v1.0.0. Gratis, 14 MB, tanpa iklan. Powered by STAADEV.">
+<meta property="og:image" content="https://staaporto.my.id/staachat.png">
+<meta property="og:url" content="https://staaporto.my.id/staachat.APK">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="StaaChat — Chat Ringan, Gratis, Tanpa Iklan">
+<meta name="twitter:description" content="Download StaaChat APK v1.0.0. Gratis, 14 MB, tanpa iklan. Powered by STAADEV.">
+<meta name="twitter:image" content="https://staaporto.my.id/staachat.png">
+
+<link rel="icon" type="image/png" href="https://staaporto.my.id/staachat.png">
+<link rel="preconnect" href="https://staaporto.my.id" crossorigin>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "StaaChat",
+  "operatingSystem": "Android",
+  "applicationCategory": "CommunicationApplication",
+  "softwareVersion": "1.0.0",
+  "fileSize": "14 MB",
+  "description": "Aplikasi chat ringan, gratis, dan bebas iklan. Powered by STAADEV.",
+  "image": "https://staaporto.my.id/staachat.png",
+  "downloadUrl": "https://staaporto.my.id/staachat.APK",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IDR"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "STAADEV"
+  }
+}
+</script>
+
+<style>
+  /* ===== RESET & BASE ===== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --blue: #38BDF8;
+    --blue-dark: #0EA5E9;
+    --bg: #0B0B0D;
+    --bg-alt: #131316;
+    --card: #1A1A1F;
+    --border: #2A2A32;
+    --text: #E8E8EC;
+    --text-dim: #9A9AA6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 16px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    background-color: var(--card);
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .brand-name span {
+    color: var(--blue);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--blue);
+  }
+
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: currentColor;
+    position: relative;
+  }
+
+  .nav-toggle span::before,
+  .nav-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background-color: currentColor;
+  }
+
+  .nav-toggle span::before {
+    top: -6px;
+  }
+
+  .nav-toggle span::after {
+    top: 6px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 30px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    text-align: center;
+  }
+
+  .btn-primary {
+    background-color: var(--blue);
+    color: #06121A;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--blue-dark);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .btn-sm {
+    padding: 10px 20px;
+    font-size: 0.875rem;
+  }
+
+  .btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 80px 0 72px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue);
+    border: 1px solid var(--border);
+    background-color: var(--bg-alt);
+    padding: 7px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--blue);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.35rem);
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--blue);
+  }
+
+  .hero p.lead {
+    font-size: 1.075rem;
+    color: var(--text-dim);
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .hero-meta li {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    background-color: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 13px;
+  }
+
+  /* ===== HERO VISUAL ===== */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .app-icon-frame {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 34px;
+  }
+
+  .app-icon-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 22px;
+  }
+
+  /* ===== SECTION ===== */
+  section {
+    padding: 76px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-head {
+    max-width: 620px;
+    margin-bottom: 44px;
+  }
+
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.6rem, 3.6vw, 2.15rem);
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .section-head p {
+    color: var(--text-dim);
+    font-size: 1rem;
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .feature {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 24px;
+    transition: border-color 0.15s ease;
+  }
+
+  .feature:hover {
+    border-color: var(--blue);
+  }
+
+  .feature-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: var(--bg-alt);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  .feature-icon svg {
+    width: 21px;
+    height: 21px;
+    stroke: var(--blue);
+    fill: none;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .feature h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ===== INFO TABLE ===== */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: var(--card);
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .info-row:nth-child(2n) {
+    border-right: none;
+  }
+
+  .info-row:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .info-label {
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  .info-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .info-value.accent {
+    color: var(--blue);
+  }
+
+  /* ===== DOWNLOAD CTA ===== */
+  .download-box {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 48px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .download-text h2 {
+    font-size: clamp(1.5rem, 3.4vw, 1.95rem);
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .download-text p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    max-width: 440px;
+  }
+
+  .download-btn-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn-download {
+    background-color: var(--blue);
+    color: #06121A;
+    padding: 17px 40px;
+    font-size: 1.05rem;
+    border-radius: 12px;
+  }
+
+  .btn-download:hover {
+    background-color: var(--blue-dark);
+  }
+
+  .download-note {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+
+  /* ===== STEPS ===== */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 22px;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: var(--blue);
+    color: #06121A;
+    font-size: 0.85rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .step p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 46px 0 40px;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: var(--card);
+  }
+
+  .footer-brand div p:first-child {
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .footer-brand div p:last-child {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+
+  .footer-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .footer-copy {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  .powered {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  .powered a {
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  .powered a:hover {
+    color: var(--blue-dark);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 880px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+
+    .hero-visual {
+      order: -1;
+    }
+
+    .app-icon-frame {
+      max-width: 220px;
+      border-radius: 32px;
+      padding: 26px;
+    }
+
+    .features,
+    .steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      right: -20px;
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 14px 20px 18px;
+      z-index: 99;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .hero {
+      padding: 56px 0 52px;
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    .features,
+    .steps,
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .info-row {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+    }
+
+    .info-row:nth-last-child(-n+2) {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .download-box {
+      padding: 34px 24px;
+      gap: 28px;
+    }
+
+    .download-btn-wrap {
+      width: 100%;
+    }
+
+    .btn-download {
+      width: 100%;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-meta {
+      align-items: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container">
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#" class="brand" aria-label="StaaChat - Beranda">
+        <img src="https://staaporto.my.id/staachat.png" alt="Logo StaaChat" width="38" height="38">
+        <span class="brand-name">Staa<span>Chat</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#fitur">Fitur</a></li>
+        <li><a href="#informasi">Informasi</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
+
+      <a href="#download" class="btn btn-primary btn-sm">Download</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="badge">Versi 1.0.0 &middot; Rilis Terbaru</div>
+        <h1>Ngobrol Lebih Ringan<br>dengan <em>StaaChat</em></h1>
+        <p class="lead">
+          Aplikasi chat yang ringan, gratis, dan sepenuhnya bebas iklan.
+          Hanya 14 MB — tanpa bloatware, tanpa gangguan, tanpa biaya.
+        </p>
+        <div class="hero-actions">
+          <a href="https://staaporto.my.id/staachat.APK" class="btn btn-primary" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download APK
+          </a>
+          <a href="#informasi" class="btn btn-outline">Lihat Detail</a>
+        </div>
+        <ul class="hero-meta">
+          <li>14 MB</li>
+          <li>Gratis</li>
+          <li>Tanpa Iklan</li>
+          <li>Android</li>
+          <li>Powered by STAADEV</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <div class="app-icon-frame">
+          <img src="https://staaporto.my.id/staachat.png" alt="Ikon Aplikasi StaaChat" width="300" height="300">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FITUR ===== -->
+<section id="fitur">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Keunggulan</div>
+      <h2>Kenapa harus StaaChat?</h2>
+      <p>Dibangun sederhana dengan fokus pada hal yang benar-benar penting: komunikasi yang lancar.</p>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/></svg>
+        </div>
+        <h3>100% Tanpa Iklan</h3>
+        <p>Tidak ada banner, pop-up, maupun iklan berjalan. Pengalaman chat bersih dari gangguan.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 13.4a8.5 8.5 0 1 1-10-10 7 7 0 0 0 10 10Z"/></svg>
+        </div>
+        <h3>Ringan &amp; Cepat</h3>
+        <p>Ukuran hanya 14 MB. Aplikasi terbuka cepat dan hemat RAM, cocok untuk semua perangkat.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6.5c0-2-2.2-3.5-5-3.5S7 4.5 7 6.5 9.2 10 12 10s5 1.5 5 3.5-2.2 3.5-5 3.5-5-1.5-5-3.5"/></svg>
+        </div>
+        <h3>Gratis Selamanya</h3>
+        <p>Semua fitur inti dapat digunakan tanpa biaya. Tidak ada langganan atau pembelian tersembunyi.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Privasi Terjaga</h3>
+        <p>Percakapanmu tetap milikmu. Kami tidak menjual data pengguna ke pihak ketiga mana pun.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></svg>
+        </div>
+        <h3>Hemat Baterai</h3>
+        <p>Dioptimalkan agar tidak membebani baterai, tetap aktif seharian tanpa khawatir cepat habis.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-4-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/></svg>
+        </div>
+        <h3>Chat Tanpa Ribet</h3>
+        <p>Antarmuka bersih dan mudah dipahami. Kirim pesan dengan cepat tanpa menu yang membingungkan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INFORMASI ===== -->
+<section id="informasi">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Detail Aplikasi</div>
+      <h2>Informasi teknis StaaChat</h2>
+      <p>Semua data resmi mengenai versi, ukuran, dan identitas paket aplikasi.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-row">
+        <span class="info-label">Nama Aplikasi</span>
+        <span class="info-value accent">StaaChat</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Nama Paket</span>
+        <span class="info-value">com.staachat.app</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Versi</span>
+        <span class="info-value">1.0.0</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Ukuran</span>
+        <span class="info-value">14 MB</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Harga</span>
+        <span class="info-value accent">Gratis</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Iklan</span>
+        <span class="info-value">Tidak Ada</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Platform</span>
+        <span class="info-value">Android</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Kategori</span>
+        <span class="info-value">Komunikasi</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Developer</span>
+        <span class="info-value accent">STAADEV</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Status</span>
+        <span class="info-value">Aktif &amp; Stabil</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOWNLOAD ===== -->
+<section id="download">
+  <div class="container">
+    <div class="download-box">
+      <div class="download-text">
+        <h2>Download StaaChat Sekarang</h2>
+        <p>Ambil file APK versi 1.0.0 langsung dari server resmi. Ukuran 14 MB, gratis, dan tanpa iklan.</p>
+      </div>
+      <div class="download-btn-wrap">
+        <a href="https://staaporto.my.id/staachat.APK" class="btn btn-download" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download APK
+        </a>
+        <span class="download-note">Versi 1.0.0 &middot; 14 MB &middot; Android &middot; Powered by STAADEV</span>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">1</span>
+        <div>
+          <h4>Klik tombol download</h4>
+          <p>File <strong>staachat.APK</strong> akan langsung diunduh ke perangkatmu.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <div>
+          <h4>Izinkan instalasi</h4>
+          <p>Aktifkan opsi "Instal dari sumber tidak dikenal" jika diminta oleh sistem.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <div>
+          <h4>Buka &amp; mulai chat</h4>
+          <p>Instalasi selesai, buka StaaChat dan nikmati pengalaman chat tanpa iklan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://staaporto.my.id/staachat.png" alt="Logo StaaChat" width="32" height="32" loading="lazy">
+        <div>
+          <p>StaaChat</p>
+          <p>com.staachat.app &middot; v1.0.0</p>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p class="footer-copy">&copy; <span id="year">2026</span> StaaChat. Semua hak dilindungi.</p>
+        <p class="powered">Powered by <a href="https://staaporto.my.id" target="_blank" rel="noopener">STAADEV</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tahun otomatis
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Menu mobile
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+
+    if (!toggle || !links) return;
+
+    toggle.addEventListener('click', function () {
+      var isOpen = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+    });
+
+    links.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Buka menu navigasi');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
